@@ -61,29 +61,24 @@
 </div>
 
   <script>
- function enterGarden() {
-    const day = document.getElementById('dayInput').value.trim();
-    const password = document.getElementById('passwordInput').value;
-    const error = document.getElementById('error');
+// Map day + password to folders
+const routes = {
+  "Day 1-tulips": "day-1",
+  "Day 2-Babyyy": "day-2"
+};
 
-    const correctPassword = "tulips"; // change this
-    const correctDay = "Day 1";       // change this daily
+const key = `${day}-${password}`;
 
-    if (day === correctDay && password === correctPassword) {
-      const gate = document.getElementById('gate');
-      const wrapper = document.querySelector('.wrapper');
+if (routes[key]) {
+  const gate = document.getElementById('gate');
+  gate.classList.add('fade-out');
 
-      gate.classList.add('fade-out');
-
-      setTimeout(() => {
-        gate.style.display = 'none';
-        wrapper.classList.remove('hidden');
-        wrapper.classList.add('show');
-      }, 600); // matches CSS transition time
-
-    } else {
-      error.textContent = "That doesn’t feel right… try again 🌸";
-    }
+  setTimeout(() => {
+    window.location.href = `./${routes[key]}/`;
+  }, 600);
+} else {
+  error.textContent = "That doesn’t feel right… try again 🌸";
+}
   }
 
     // Optional: Add small scale "bloom" effect on flower
@@ -101,3 +96,4 @@
   </script>
 </body>
 </html>
+
