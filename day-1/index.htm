@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Babyyy's Garden</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="gate">
+  <h2>Welcome Babyyyy!!! 🌷</h2>
+
+  <input type="text" id="dayInput" placeholder="What day is it today?" />
+  <input type="password" id="passwordInput" placeholder="Password" />
+
+  <button onclick="enterGarden()">Enter</button>
+
+  <p id="error"></p>
+</div>
+
+  <div class="wrapper hidden">
+
+  <!-- Checkbox to toggle gift/flower -->
+  <input type="checkbox" id="giftToggle">
+
+  <!-- Text BEFORE opening gift -->
+  <h1 class="before-open">Tap the gift to see your flower 🌸</h1>
+
+  <!-- Text AFTER opening gift -->
+  <h1 class="after-open">Christmas Flowers 🎄</h1>
+
+  <!-- Gift image -->
+  <label class="gift" for="giftToggle">
+    <img src="gift.png" alt="Gift">
+  </label>
+
+  <!-- Flower container -->
+  <div class="flower">
+    <img src="White Tulips.png" alt="Tulips" class="bloom">
+    <h2>Tulips</h2>
+    <p class="meaning">Meaning: Perfect love</p>
+    <p>Hope this brightens your day, my love ❤️</p>
+	
+	<!-- Polaroid photos -->
+ <div class="polaroids">
+    <div class="polaroid left">
+      <img src="us1.jpg" alt="Us">
+      <p class="caption">1st December Date 🤍</p>
+    </div>
+
+    <div class="polaroid right">
+      <img src="us2.jpg" alt="Memory">
+      <p class="caption">2nd December Date 🤍</p>
+    </div>
+</div>
+
+  </div>
+
+
+
+</div>
+
+ <script>
+// Map day + password to folders
+const routes = {
+  "Day 1-tulips": "day-1",
+  "Day 2-Babyyy": "day-2"
+};
+
+const key = `${day}-${password}`;
+
+if (routes[key]) {
+  const gate = document.getElementById('gate');
+  gate.classList.add('fade-out');
+
+  setTimeout(() => {
+    window.location.href = `./${routes[key]}/`;
+  }, 600);
+} else {
+  error.textContent = "That doesn’t feel right… try again 🌸";
+}
+  }
+
+    // Optional: Add small scale "bloom" effect on flower
+    const checkbox = document.getElementById('giftToggle');
+    const flower = document.querySelector('.flower');
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        flower.style.transform = 'translate(-50%, -50%) scale(0.9)';
+        setTimeout(() => {
+          flower.style.transform = 'translate(-50%, -50%) scale(1)';
+        }, 50);
+      }
+    });
+  </script>
+</body>
+</html>
